@@ -1,0 +1,68 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-12-04 00:07:03
+ * @LastEditTime: 2021-12-31 15:07:49
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: \bigScrren\index.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        transform-origin: 0 0;
+        overflow: hidden;
+        position: relative;
+      }
+      .wrap {
+        overflow: auto;
+        width: 200px;
+        height: 200px;
+        background-color: rebeccapurple;
+      }
+      .bottom {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body style="visibility: hidden">
+    <div class="wrap">
+      <h1>测试怕</h1>
+    </div>
+    <div class="bottom">测试底部</div>
+    <script>
+      var setScale = (() => {
+        const designWidth = 1920,
+          designHeight = 1080;
+        const getBodyBaseStyle = `width: 1920px; height: 1080px; transform-origin: left top;`;
+        return () => {
+          const { innerWidth, innerHeight } = window;
+          const scale = innerWidth / designWidth;
+          document.body.style = `${getBodyBaseStyle}transform: scale(${scale})`;
+        };
+      })();
+      window.addEventListener("load", () => {
+        setScale();
+        setTimeout(() => {
+          document.body.style.setProperty("visibility", "visible");
+        }, 0);
+      });
+
+      window.addEventListener("resize", () => {
+        setScale();
+      });
+    </script>
+  </body>
+</html>
